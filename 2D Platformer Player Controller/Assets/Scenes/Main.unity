@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29226881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29226882}
+  m_Layer: 6
+  m_Name: MeleeAttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29226882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29226881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.016, y: -0.263, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1281199367}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384862579
 GameObject:
   m_ObjectHideFlags: 0
@@ -12654,6 +12685,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Combat Dummy
       objectReference: {fileID: 0}
+    - target: {fileID: 8488567857283742786, guid: 8801e2b584131a8458f4af6e8ca5f1b0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8488567857283742786, guid: 8801e2b584131a8458f4af6e8ca5f1b0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8801e2b584131a8458f4af6e8ca5f1b0, type: 3}
 --- !u!4 &769379677 stripped
@@ -17710,6 +17749,37 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &971371507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971371508}
+  m_Layer: 6
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &971371508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971371507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1281199367}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120269851
 GameObject:
   m_ObjectHideFlags: 0
@@ -17771,6 +17841,7 @@ GameObject:
   - component: {fileID: 1281199370}
   - component: {fileID: 1281199369}
   - component: {fileID: 1281199368}
+  - component: {fileID: 1281199372}
   m_Layer: 6
   m_Name: Alive
   m_TagString: Enemy
@@ -17794,6 +17865,8 @@ Transform:
   - {fileID: 781376584}
   - {fileID: 1317049486}
   - {fileID: 423985708}
+  - {fileID: 29226882}
+  - {fileID: 971371508}
   m_Father: {fileID: 1309076566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17916,6 +17989,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1281199372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281199366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14d7a4a09028864e84eefdd45a06ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287941842
 GameObject:
   m_ObjectHideFlags: 0
@@ -18010,11 +18095,16 @@ MonoBehaviour:
   wallCheck: {fileID: 781376584}
   ledgeCheck: {fileID: 1410394106}
   playerCheck: {fileID: 423985708}
+  groundCheck: {fileID: 971371508}
   idleStateData: {fileID: 11400000, guid: fa7fca4b51b08ce4d883bd12d3bd24fb, type: 2}
   moveStateData: {fileID: 11400000, guid: beb9b9a55b442c146914200b25cde0d3, type: 2}
   playerDetectedData: {fileID: 11400000, guid: b1022129873629f40bf956dfe79b1038, type: 2}
   chargeStateData: {fileID: 11400000, guid: 7bad625b910e37f4cadc666b0243222b, type: 2}
   lookForPlayerStateData: {fileID: 11400000, guid: fed2bcfe9309d8545831782da09cf639, type: 2}
+  meleeAttackStateData: {fileID: 11400000, guid: 0a31f0dba6f387a4f8e6e1b2d017a30e, type: 2}
+  stunStateData: {fileID: 11400000, guid: 524a39cba0ecc7d4e9ec4be76a1b5be7, type: 2}
+  deadStateData: {fileID: 11400000, guid: 46245c37c70aea7489d4ac8b3a78e5de, type: 2}
+  meleeAttackPosition: {fileID: 29226882}
 --- !u!1 &1317049485
 GameObject:
   m_ObjectHideFlags: 0
