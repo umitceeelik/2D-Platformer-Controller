@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E2_MoveState : MoveState
+public class E2_LookForPlayerState : LookForPlayerState
 {   
     private Enemy2 enemy;
 
-    public E2_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E2_LookForPlayerState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_LookForPlayer stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -32,12 +32,11 @@ public class E2_MoveState : MoveState
 
         if (isPlayerInMinAgroRange)
         {
-            stateMachine.ChangeState(enemy.playerDetectedState);
+            stateMachine.ChangeState(enemy.playerDetectedState);     
         }
-        else if (isDetectingWall || !isDetectingLedge)
-        {   
-            enemy.idleState.SetFlipAfterIdle(true);
-            stateMachine.ChangeState(enemy.idleState);
+        else if (isAllTurnsTimeDone)
+        {
+            stateMachine.ChangeState(enemy.moveState);
         }
     }
 

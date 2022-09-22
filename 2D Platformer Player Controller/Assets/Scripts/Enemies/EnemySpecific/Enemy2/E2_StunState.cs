@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E2_MoveState : MoveState
+public class E2_StunState : StunState
 {   
     private Enemy2 enemy;
 
-    public E2_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
+    public E2_StunState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_StunState stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -30,19 +30,21 @@ public class E2_MoveState : MoveState
     {
         base.LogicUpdate();
 
-        if (isPlayerInMinAgroRange)
+        if (isStunTimeOver)
         {
-            stateMachine.ChangeState(enemy.playerDetectedState);
-        }
-        else if (isDetectingWall || !isDetectingLedge)
-        {   
-            enemy.idleState.SetFlipAfterIdle(true);
-            stateMachine.ChangeState(enemy.idleState);
+            if (isPlayerInMinAgroRange)
+            {
+                stateMachine.ChangeState(enemy.playerDetectedState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.lookForPlayerState);
+            }
         }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-    }
+    }  
 }
